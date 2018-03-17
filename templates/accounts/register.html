@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册 | 虚拟医院学习系统</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
+    <meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+<body class=" login" data-admin-utc-offset="0">
+
+<!-- Container -->
+    <div id="container">
+    <!-- Header -->
+        <div id="header">
+            <div id="branding">
+                <h1 id="site-name"><a href="./register">虚拟医院学习系统</a></h1>
+            </div>
+        </div>
+    <!-- END Header -->
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        <div id="content-main">
+            <form action="./register" method="post" id="register-form">
+                <input type="hidden" name="csrfmiddlewaretoken" value="G86dINhLAc0XQN0tbT0BCMNViwz2ds3tJrlcTC2VVukZe175Eblm7UDrBysbOnQv">
+                <div class="form-row">
+                    <label class="required" for="id_account_name">用户名:</label>
+                    <input type="text" name="account_name" autofocus="" required="" id="id_account_name">
+                </div>
+                <div class="form-row">
+                    <label class="required" for="id_account_email">邮箱:</label>
+                    <input type="email" name="account_email" required="" id="id_account_email">
+                </div>
+                <div class="form-row">
+                    <label class="required" for="id_account_password">密码:</label>
+                    <input type="password" name="account_password" required="" id="id_account_password">
+                </div>
+                <div class="form-row">
+                    <span style="color:red;">&nbsp;{{ error_msg }}</span>
+                </div>
+                <div class="form-row" align="right">
+                    <a href="./login">直接登录？</a>
+                </div>
+                <div class="submit-row">
+                    <label>&nbsp;</label><input type="submit" value="注册">
+                </div>
+            </form>
+        </div>
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"> © 虚拟宠物学习系统</div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>
