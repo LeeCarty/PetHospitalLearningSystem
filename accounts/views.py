@@ -2,6 +2,7 @@
 from django.shortcuts import render, render_to_response
 # from django.http import HttpResponse
 from .models import Accounts
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -59,12 +60,28 @@ def register(request):
 def email_confirm(request):
     context = {}
     error_msg = ''
+    context['account_email'] = ''
     if request.method == 'POST':
         email = request.POST['account_email']
+        context['account_email'] = email
+        account_confirm_code = request.POST['account_confirm_code'].lower()
+
         try:
             account_id = Accounts.objects.get(email=email)
             context['account_email'] = account_id.email
-            return render(request, 'accounts/passwordmodify.html', context=context)
+            confirm_code = account_id.confirm_code
+            if not confirm_code:
+                confirm_code = account_id.set_confirm_code()
+                subject = '找回密码 | 验证邮件'
+                message = '\n\r验证码如下：\n\r' + confirm_code + '\n\r'
+                send_mail(subject, message, '3071729230@qq.com', ['lichenglin2014.com@outlook.com'])
+            condition = (account_confirm_code == confirm_code)
+            if not account_confirm_code or not condition:
+                error_msg = '请填写正确的验证码！'
+            else:
+                account_id.confirm_code = ''
+                account_id.save()
+                return render(request, 'accounts/passwordmodify.html', context=context)
         except Accounts.DoesNotExist:
             error_msg = '该邮箱未注册！请确认后重试！'
 

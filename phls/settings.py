@@ -127,3 +127,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/resource/'
+
+
+# qq  POP3/SMTP  email configure
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '3071729230@qq.com' # 帐号
+EMAIL_HOST_PASSWORD = 'dmxbcmpifsapdeda'  # 密码kpdetvnsazabdchj
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
