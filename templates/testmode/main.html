@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>系统主页</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/navCss.css" type="text/css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .BACK {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            position: absolute;
+            background: url(pic/main.jpg) no-repeat fixed top;
+            background-size: cover;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="BACK">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- navbar-inverse 设置背景 
+                navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
+                增加导航条的可访问性 role="navigation"-->
+            <div class="user-logo">
+                <img src="pic/girl.png" class="img-circle img-position">
+            </div>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="main.html" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+                </div>
+                <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
+                    <li>
+                        <a style="font-weight: bold" href="#">医院导览</a>
+                    </li>
+                    <li class="dropdown">
+                        <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            职能学习
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li style="text-align: center">
+                                <a href="#">角色扮演</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li style="text-align: center">
+                                <a href="#">病例学习</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            测试
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li style="text-align: center">
+                                <a href="testType.html">进入测试</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li style="text-align: center">
+                                <a href="testManage.html">测试管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

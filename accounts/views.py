@@ -1,13 +1,14 @@
 # coding: utf-8
 from django.shortcuts import render, render_to_response
-# from django.http import HttpResponse
+from django.http import HttpResponse
 from .models import Accounts
 from django.core.mail import send_mail
+from smtplib import SMTPException
 
 # Create your views here.
 
 
-# 处理登录界面请求
+# 处理登录界面请求 路由：'/'
 def login(request):
     request.encoding = 'utf-8'
     context = {}
@@ -31,7 +32,7 @@ def login(request):
     return render(request, 'accounts/index2.html', context=context)
 
 
-# 处理用户注册请求
+# 处理用户注册请求  路由：'/'
 def register(request):
     context = {}
     error_msg = ''
@@ -56,7 +57,7 @@ def register(request):
     return render(request, 'accounts/sign-up2.html', context=context)
 
 
-# 找回密码前邮箱确认请求处理
+# 找回密码前邮箱确认请求处理   路由：'/'
 def email_confirm(request):
     context = {}
     error_msg = ''
@@ -74,7 +75,10 @@ def email_confirm(request):
                 confirm_code = account_id.set_confirm_code()
                 subject = '找回密码 | 验证邮件'
                 message = '\n\r验证码如下：\n\r' + confirm_code + '\n\r'
-                send_mail(subject, message, '3071729230@qq.com', ['lichenglin2014.com@outlook.com'])
+                try:
+                    send_mail(subject, message, '3071729230@qq.com', ['lichenglin2014.com@outlook.com'])
+                except SMTPException:
+                    return
             condition = (account_confirm_code == confirm_code)
             if not account_confirm_code or not condition:
                 error_msg = '请填写正确的验证码！'
@@ -89,7 +93,7 @@ def email_confirm(request):
     return render(request, 'accounts/forgot2.html', context=context)
 
 
-# 密码修改请求处理
+# 密码修改请求处理  路由：'/password_modify'
 def password_modify(request):
     context = {}
     error_msg = ''

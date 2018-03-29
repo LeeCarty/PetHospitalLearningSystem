@@ -1,6 +1,5 @@
 # coding: utf-8
 from django.db import models
-# from django.core.mail import send_mail
 import random
 
 # Create your models here.
@@ -9,7 +8,7 @@ import random
 class Accounts(models.Model):
 	name = models.CharField(max_length=30)
 	password = models.CharField(max_length=20)
-	email = models.EmailField(max_length=100)
+	email = models.EmailField(max_length=100, primary_key=True)
 	role = models.BooleanField(default=False)
 	create_date = models.DateTimeField(auto_now_add=True) # 创建日期
 	modified_date = models.DateTimeField(auto_now_add=True) # 修改日期
@@ -18,7 +17,6 @@ class Accounts(models.Model):
 
 	def __str__(self):
 		return self.name
-
 
 	def set_confirm_code(self):
 		confirm_code = ''
