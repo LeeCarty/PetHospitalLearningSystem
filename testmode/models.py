@@ -1,6 +1,6 @@
 # coding: utf-8
 from django.db import models
-from phls.accounts.models import Accounts
+# from accounts.models import Accounts
 
 # Create your models here.
 
@@ -36,7 +36,7 @@ class TestPaper(models.Model):
     disease_type_id = models.ForeignKey(DiseaseType)
     disease_small_type_id = models.ForeignKey(DiseaseSmallType)
     tags = models.ManyToManyField(Tag, blank=True)
-    test_time = models.CharField(default='30分钟')
+    test_time = models.CharField(max_length=20, default='30分钟')
 
     def __str__(self):
         return self.name
@@ -56,7 +56,7 @@ class PaperQuestions(models.Model):
 
 
 class UserTestRecords(models.Model):
-    user_id = models.ManyToManyField(Accounts)
+    user_id = models.ForeignKey('accounts.Accounts')
     paper_id = models.ForeignKey(TestPaper)
     finish_time = models.DateTimeField(auto_now_add=True)
     grade = models.IntegerField(default=0)
