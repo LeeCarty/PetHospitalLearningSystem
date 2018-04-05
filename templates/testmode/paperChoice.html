@@ -1,14 +1,13 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>选择试卷</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="css/navCss.css" type="text/css">
-    <link rel="stylesheet" href="css/testCss.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'testmode/css/navCss.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'testmode/css/testCss.css' %}" type="text/css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -23,7 +22,7 @@
             height: 100%;
             background-position: center;
             position: absolute;
-            background: url(pic/3.jpg) no-repeat fixed top;
+            background: url({% static 'testmode/images/3.jpg' %}) no-repeat fixed top;
             background-size: cover;
 
         }
@@ -45,15 +44,15 @@
 <body>
     <div class="BACK">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <!-- navbar-inverse 设置背景 
+            <!-- navbar-inverse 设置背景
                 navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
                 增加导航条的可访问性 role="navigation"-->
             <div class="user-logo">
-                <img src="pic/girl.png" class="img-circle img-position">
+                <img src="{% static 'testmode/images/girl.png' %}" class="img-circle img-position">
             </div>
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="main.html" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+                    <a class="navbar-brand" href="#" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
                 </div>
                 <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
                     <li>
@@ -74,18 +73,18 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
                             测试
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li style="text-align: center">
-                                <a href="testType.html">进入测试</a>
+                                <a href="#">进入测试</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li style="text-align: center">
-                                <a href="testManage.html">测试管理</a>
+                                <a href="#">测试管理</a>
                             </li>
                         </ul>
                     </li>
@@ -94,47 +93,42 @@
         </nav>
 
         <div class="input-group col-md-3" style="margin:10em auto 0 ">
-            <input type="text" class="form-control" placeholder="请输入关键字" />
-            <span class="input-group-btn">
-                <button class="btn btn-info btn-search">查找</button>
-            </span>
+            <form action="./paper_search" method="post">
+                <input type="text" class="form-control" placeholder="请输入关键字" />
+                <span class="input-group-btn">
+                    <input class="btn btn-info btn-search">搜索</input>
+                </span>
+            </form>
         </div>
 
 
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>试卷编号</th>
-                    <th>试卷？？</th>
-                    <th>试卷？？</th>
-                    <th>试卷？？</th>
-                    <th>试卷难度</th>
+                    <th>试卷名</th>
+                    <th>病种</th>
+                    <th>疾病</th>
+                    <th>标签</th>
+                    <th>测试时间</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <a href="test.html">0000001</a>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
+                {% for paper in paper_list %}
+                    <tr>
+                        <td><a href="test.html">{{ paper.name }}</a></td>
+                        <td>{{ paper.disease_type_id.name }}</td>
+                        <td>{{ paper.disease_small_type_id.name }}</td>
+                        <td>{{ paper.tags }}</td>
+                        <td>{{ paper.test_time }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
