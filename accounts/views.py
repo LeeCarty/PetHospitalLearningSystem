@@ -29,7 +29,7 @@ def login(request):
             error_msg = '用户不存在！请注册后重试！'
 
     context['error_msg'] = error_msg
-    return render(request, 'accounts/index2.html', context=context)
+    return render(request, 'accounts/login.html', context=context)
 
 
 # 处理用户注册请求  路由：'/'
@@ -49,12 +49,12 @@ def register(request):
             # 判断两次密码是否一致
             if psd == psd2:
                 Accounts(name=user_name, email=email, password=psd).save()
-                return render(request, 'accounts/index2.html', context=context)
+                return render(request, 'accounts/login.html', context=context)
             else:
                 error_msg = '两次输入的密码不匹配！'
 
     context['error_msg'] = error_msg
-    return render(request, 'accounts/sign-up2.html', context=context)
+    return render(request, 'accounts/register.html', context=context)
 
 
 # 找回密码前邮箱确认请求处理   路由：'/'
@@ -90,7 +90,7 @@ def email_confirm(request):
             error_msg = '该邮箱未注册！请确认后重试！'
 
     context['error_msg'] = error_msg
-    return render(request, 'accounts/forgot2.html', context=context)
+    return render(request, 'accounts/emailconfirm.html', context=context)
 
 
 # 密码修改请求处理  路由：'/password_modify'
