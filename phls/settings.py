@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts'  # accounts
+    'accounts',  # accounts
+    'testmode',  # testmode
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,10 @@ DATABASES = {
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+
+        # test database setting
+        'TEST_CHARSET': 'utf8',
+        'TEST_COLLATION': 'utf8_general_ci'
     }
 }
 
@@ -126,4 +131,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/resource/'
+
+
+# qq  POP3/SMTP  email configure
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '3071729230@qq.com' # 帐号
+EMAIL_HOST_PASSWORD = 'dmxbcmpifsapdeda'  # 密码kpdetvnsazabdchj
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

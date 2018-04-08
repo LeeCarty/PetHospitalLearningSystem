@@ -3,10 +3,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>系统主页</title>
+    <title>选择试卷</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'accounts/css/navCss.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'testmode/css/navCss.css' %}" type="text/css">
+    <!--<link rel="stylesheet" href="{% static 'testmode/css/testCss.css' %}" type="text/css">-->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -15,14 +16,27 @@
             margin: 0;
             padding: 0;
         }
+
         .BACK {
             width: 100%;
             height: 100%;
             background-position: center;
             position: absolute;
-            background: url({% static 'testmode/images/main.jpg' %}) no-repeat fixed top;
+            background: url({% static 'testmode/images/3.jpg' %}) no-repeat fixed top;
             background-size: cover;
 
+        }
+
+        .table {
+            margin: 4em auto 0;
+            padding: 0 2em;
+            width: 80em;
+        }
+
+        .table th,
+        td {
+            text-align: center;
+            /* vertical-align:middle; */
         }
     </style>
 </head>
@@ -66,11 +80,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li style="text-align: center">
-                                <a href="./test/test_type">进入测试</a>
+                                <a href="#">进入测试</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li style="text-align: center">
-                                <a href="./test/test_manage">测试管理</a>
+                                <a href="#">测试管理</a>
                             </li>
                         </ul>
                     </li>
@@ -78,13 +92,49 @@
             </div>
         </nav>
 
-        <!--<div class="container">-->
-            <!--<main>-->
-                <!--{% block main %}-->
-                <!--{% endblock main %}-->
-            <!--</main>-->
-        <!--</div>-->
+        <div class="input-group col-md-3" style="margin:10em auto 0 ">
+            <form action="./paper_search" method="post">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="请输入关键字" name="search_key"/>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-info btn-search">搜索</button>
+                </div>
+            </form>
+        </div>
 
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>试卷名</th>
+                    <th>病种</th>
+                    <th>疾病</th>
+                    <th>标签</th>
+                    <th>测试时间</th>
+                    <th>选择作答</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paper in paper_list %}
+                    <tr>
+                        <td>{{ paper.name }}</td>
+                        <td>{{ paper.disease_type_id.name }}</td>
+                        <td>{{ paper.disease_small_type_id.name }}</td>
+                        <td>{{ paper.tags.name }}</td>
+                        <td>{{ paper.test_time }}</td>
+                        <td><a href="{%url 'test_paper' paper.id %}">开始答题</a></td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 
