@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'testmode/css/navCss.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'testmode/css/testCss.css' %}" type="text/css">
+    <!--<link rel="stylesheet" href="{% static 'testmode/css/testCss.css' %}" type="text/css">-->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -94,10 +94,12 @@
 
         <div class="input-group col-md-3" style="margin:10em auto 0 ">
             <form action="./paper_search" method="post">
-                <input type="text" class="form-control" placeholder="请输入关键字" />
-                <span class="input-group-btn">
-                    <input class="btn btn-info btn-search">搜索</input>
-                </span>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="请输入关键字" name="search_key"/>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-info btn-search">搜索</button>
+                </div>
             </form>
         </div>
 
@@ -110,23 +112,25 @@
                     <th>疾病</th>
                     <th>标签</th>
                     <th>测试时间</th>
+                    <th>选择作答</th>
                 </tr>
             </thead>
             <tbody>
                 {% for paper in paper_list %}
                     <tr>
-                        <td><a href="test.html">{{ paper.name }}</a></td>
+                        <td>{{ paper.name }}</td>
                         <td>{{ paper.disease_type_id.name }}</td>
                         <td>{{ paper.disease_small_type_id.name }}</td>
-                        <td>{{ paper.tags }}</td>
+                        <td>{{ paper.tags.name }}</td>
                         <td>{{ paper.test_time }}</td>
+                        <td><a href="{%url 'test_paper' paper.id %}">开始答题</a></td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td></td><td></td><td></td><td></td><td></td>
+                        <td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td></td>
                     </tr>
                     <tr>
-                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                 {% endfor %}
             </tbody>

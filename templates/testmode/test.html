@@ -1,13 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title>试卷</title>
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous">
-	<link rel="stylesheet" href="css/navCss.css" type="text/css">
+	<link rel="stylesheet" href="{% static 'testmode/css/navCss.css' %}" type="text/css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	 crossorigin="anonymous"></script>
@@ -19,7 +18,7 @@
 	navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
 	增加导航条的可访问性 role="navigation"-->
 		<div class="user-logo">
-			<img src="pic/girl.png" class="img-circle img-position">
+			<img src="{% static 'testmode/images/girl.png' %}" class="img-circle img-position">
 		</div>
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -51,11 +50,11 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li style="text-align: center">
-							<a href="testType.html">进入测试</a>
+							<a href="#">进入测试</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li style="text-align: center">
-							<a href="testManage.html">测试管理</a>
+							<a href="#">测试管理</a>
 						</li>
 					</ul>
 				</li>
@@ -65,133 +64,42 @@
 
 
 	<div class="shijuan">
-			<form id="shijuanform" action="" method="">
-				<table class="">
+			<form id="shijuanform" action="../paper_submit" method="post">
+				<table class="paper-question-table">
 					<!-- 第一题    -->
-					<tr>
-						<td>
-							选择题一
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="radio" value="A" name="xz1" />&nbsp;&nbsp;A
-						</td>
-						<td>${}</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="radio" value="B" name="xz1" />&nbsp;&nbsp;B
-						</td>
-						<td>${}</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="radio" value="C" name="xz1" />&nbsp;&nbsp;C
-						</td>
-						<td>${}</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="radio" value="D" name="xz1" />&nbsp;&nbsp;D
-						</td>
-						<td>${}</td>
-					</tr>
+					{% for question in question_list %}
+						<tr>
+							<td>{{ question.name }}</td>
+						</tr>
+						<tr>
+							<td>{{ question.content }}</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" value="A" name="A" />&nbsp;&nbsp;A：{{ question.answer_A }}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" value="B" name="B" />&nbsp;&nbsp;B：{{ question.answer_B }}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" value="C" name="C" />&nbsp;&nbsp;C：{{ question.answer_C }}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" value="D" name="D" />&nbsp;&nbsp;D：{{ question.answer_D }}
+							</td>
+						</tr>
+					{% empty %}
+						<tr>
+							<td>一张没有试题的试卷！ 请删除该试卷或者为其添加试题！</td>
+						</tr>
+					{% endfor %}
 
-					<!-- 第二题    -->
-					<tr>
-
-							<td>
-								选择题二
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="A" name="xz2" />&nbsp;&nbsp;A
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="B" name="xz2" />&nbsp;&nbsp;B
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="C" name="xz2" />&nbsp;&nbsp;C
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="D" name="xz2" />&nbsp;&nbsp;D
-							</td>
-							<td>${}</td>
-						</tr>
-
-						<!-- 第三题    -->
-					<tr>
-							<td>
-								选择题三
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="A" name="xz3" />&nbsp;&nbsp;A
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="B" name="xz3" />&nbsp;&nbsp;B
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="C" name="xz3" />&nbsp;&nbsp;C
-							</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" value="D" name="xz3" />&nbsp;&nbsp;D
-							</td>
-							<td>${}</td>
-						</tr>
-	
-						<!-- 第四题    -->
-						<tr>
-	
-								<td>
-									选择题四
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="radio" value="A" name="xz4" />&nbsp;&nbsp;A
-								</td>
-								<td>${}</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="radio" value="B" name="xz4" />&nbsp;&nbsp;B
-								</td>
-								<td>${}</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="radio" value="C" name="xz4" />&nbsp;&nbsp;C
-								</td>
-								<td>${}</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="radio" value="D" name="xz4" />&nbsp;&nbsp;D
-								</td>
-								<td>${}</td>
-							</tr>
 				</table>
 			</form>
 		</div>

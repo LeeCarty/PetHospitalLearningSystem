@@ -50,6 +50,7 @@ class PaperQuestions(models.Model):
     answer_B = models.CharField(max_length=100, null=False)
     answer_C = models.CharField(max_length=100, null=False)
     answer_D = models.CharField(max_length=100, null=True)
+    answer = models.CharField(max_length=10, null=False)
 
     def __str__(self):
         return self.name
