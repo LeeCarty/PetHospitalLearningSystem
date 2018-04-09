@@ -1,0 +1,396 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宠物医院导览</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link href="{% static 'guide/css/font-awesome.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'guide/css/navCss.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'guide/css/guide.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'guide/css/bootstrap-switch.css' %}" />
+
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'guide/js/bootstrap-switch.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'guide/js/google-maps.js' %}"></script>
+    <script>
+    $(document).ready(function(){
+        $(".vertical-nav").verticalnav({speed: 400,align: "left"});
+        $('.depart-tooltip').tooltip('show');
+        $("[type='checkbox']").bootstrapSwitch(
+            {
+
+                size:"small",
+                onSwitchChange:function(event,state){
+                    if(state==true){
+                        $(".depart-tooltip").tooltip('show');
+                    }else{
+                        $(".depart-tooltip").tooltip('hide');
+                    }
+                }
+            }
+        );
+
+    });
+    </script>
+    <script src="{% static 'guide/js/guide.js' %}"></script>
+</head>
+
+<body>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- navbar-inverse 设置背景
+                navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
+                增加导航条的可访问性 role="navigation"-->
+    <div class="user-logo">
+        <img src="{% static 'guide/images/girl.png' %}" class="img-circle img-position">
+    </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="main.html" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+        </div>
+        <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
+            <li class="active">
+                <a style="font-weight: bold" href="guide.html">医院导览</a>
+            </li>
+            <li class="dropdown">
+                <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    职能学习
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li style="text-align: center">
+                        <a href="#">角色扮演</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li style="text-align: center">
+                        <a href="#">病例学习</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    测试
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li style="text-align: center">
+                        <a href="testType.html">进入测试</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li style="text-align: center">
+                        <a href="testManage.html">测试管理</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--宠物医院平面图-->
+<div id="content">
+    <h1>宠物医院导览</h1>
+
+    <div id="item1" class="item">
+        <h2>1F</h2>
+        <div class="relative">
+            <img src="{% static 'guide/images/1F.png' %}" alt="一楼平面图"/>
+            <a class="depart-tooltip" id="depart1"
+               style="left:156px;top:72px;width:59px;height:39px;"
+               data-toggle="tooltip" title="处置室"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart2"
+               style="left:158px;top:206px;width:82px;height:84px;"
+               data-toggle="tooltip" title="检验科"
+               onclick="$('#depart2_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart3"
+               style="left:395px;top:235px;width:117px;height:55px;"
+               data-toggle="tooltip" title="导诊台"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart4"
+               style="left:571px;top:350px;width:78px;height:56px;"
+               data-toggle="tooltip" title="收费处"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+        </div>
+
+
+    </div>
+    <div id="item2" class="item">
+        <h2>2F</h2>
+        <div class="relative">
+            <img src="{% static 'guide/images/2F.png' %}" alt="二楼平面图"/>
+            <a class="depart-tooltip" id="depart5"
+               style="left:157px;top:33px;width:117px;height:50px;"
+               data-toggle="tooltip" title="眼科诊室"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart6"
+               style="left:275px;top:33px;width:175px;height:51px;"
+               data-toggle="tooltip" title="骨科诊室"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart7"
+               style="left:157px;top:289px;width:206px;height:70px;"
+               data-toggle="tooltip" title="特需猫科"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart8"
+               style="left:158px;top:379px;width:176px;height:52px;"
+               data-toggle="tooltip" title="普通猫科"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart9"
+               style="left:334px;top:379px;width:147px;height:52px;"
+               data-toggle="tooltip" title="内科"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart10"
+               style="left:483px;top:379px;width:175px;height:52px;"
+               data-toggle="tooltip" title="外科"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart11"
+               style="left:390px;top:174px;width:121px;height:60px;"
+               data-toggle="tooltip" title="药房"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+        </div>
+
+    </div>
+    <div id="item3" class="item">
+        <h2>3F</h2>
+        <div class="relative">
+            <img src="{% static 'guide/images/3F.png' %}" alt="三楼平面图"/>
+            <a class="depart-tooltip" id="depart12"
+               style="left:158px;top:34px;width:292px;height:51px;"
+               data-toggle="tooltip" title="病房"
+               onclick="$('#depart12_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart13"
+               style="left:453px;top:380px;width:204px;height:52px;"
+               data-toggle="tooltip" title="A区手术室"
+               onclick="$('#depart13_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart14"
+               style="left:689px;top:369px;width:197px;height:63px;"
+               data-toggle="tooltip" title="B区手术室"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart15"
+               style="left:159px;top:291px;width:86px;height:139px;"
+               data-toggle="tooltip" title="影像中心"
+               onclick="$('#depart15_Modal').modal('show');"
+            ></a>
+            <a class="depart-tooltip" id="depart16"
+               style="left:247px;top:291px;width:114px;height:139px;"
+               data-toggle="tooltip" title="活动室"
+               onclick="$('#default_Modal').modal('show');"
+            ></a>
+        </div>
+
+    </div>
+
+</div>
+
+<!--楼层索引导航-->
+<div id="menu">
+    <ul>
+        <li><a href="#item1" onclick="scrollToFloor(1,0)" class="current">1F</a></li>
+        <li><a href="#item2" onclick="scrollToFloor(2,0)" >2F</a></li>
+        <li><a href="#item3" onclick="scrollToFloor(3,0)" >3F</a></li>
+
+    </ul>
+</div>
+<!--科室导航-->
+<div id="guide">
+
+    <!--效果html开始-->
+    <div class="content">
+        <ul class="vertical-nav white red">
+            <li class="active"><a>诊疗室  <span class="submenu-icon"></span> </a>
+
+                <ul>
+                    <li><a onclick="scrollToFloor(2,5)">眼科诊室</a></li>
+                    <li><a onclick="scrollToFloor(2,6)">骨科诊室</a></li>
+                    <li><a>猫科诊室<span class="submenu-icon"></span></a>
+                        <ul>
+                            <li><a onclick="scrollToFloor(2,8)">普通门诊</a></li>
+                            <li><a onclick="scrollToFloor(2,7)">特需门诊</a></li>
+                        </ul>
+                    </li>
+                    <li><a onclick="scrollToFloor(2,9)">内科诊室</a></li>
+                    <li><a onclick="scrollToFloor(2,10)">外科诊室</a></li>
+                </ul>
+            </li>
+            <li><a onclick="scrollToFloor(1,3)">导诊台</a></li>
+            <li><a onclick="scrollToFloor(1,1)">处置室</a></li>
+            <li><a onclick="scrollToFloor(1,2)">检验科</a></li>
+            <li><a onclick="scrollToFloor(2,11)">药房</a></li>
+            <li><a onclick="scrollToFloor(3,12)">病房</a></li>
+            <li><a>手术室
+                <span class="submenu-icon"></span></a>
+                <ul>
+                    <li><a onclick="scrollToFloor(3,13)">A区手术室</a></li>
+                    <li><a onclick="scrollToFloor(3,14)">B区手术室</a></li>
+                </ul>
+            </li>
+            <li><a onclick="scrollToFloor(3,15)">影像中心</a></li>
+            <li><a onclick="scrollToFloor(1,4)">收费处</a></li>
+            <li><a onclick="scrollToFloor(3,16)">活动室</a></li>
+        </ul>
+    </div>
+    <!--效果html结束-->
+    <div class="clear"></div>
+
+</div>
+
+<!-- 显示名称switch -->
+
+    <div class="switch switch-large" id="switch-box">
+        <input id="switch-checkbox" type="checkbox" checked/>
+        <br/>
+        <span>名称显示</span>
+    </div>
+
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="default_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">抱歉，未找到相关信息！</div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="depart2_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >检验科</h4>
+            </div>
+            <div class="modal-body">
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">简介</h5>
+                <p style="font-size:15px;line-height:25pt">&nbsp; &nbsp; &nbsp;检验科现在共有15名检验人员，其中硕士学历5人，本科学历9人；医疗设备包括各种血球仪、生化仪、血气分析仪、凝血检查仪、梅里埃VIDAS分析仪（可检查犬猫皮质醇、甲状腺素、孕酮、雌二醇、睾酮等激素水平，也可检查多种血清抗体水平）、犬猫糖化血红蛋白仪、西门子尿检仪、酶标仪等先进设备，并配备10余台高级生物显微镜（OlympusCX21和OlympusCX31、LEIKADM2500显微镜及LEIKA成像系统），不但能完成各种常规检验（包括血常规检查、生化检查、血气检查、凝血检查、尿液分析、粪便检查），还能完成细胞学检查、微生物检查（细菌分离培养鉴定及药敏试验、真菌分离培养及形态学鉴定）、内分泌疾病筛查、发情鉴定、组织病理学检查、犬猫常见传染病抗体水平筛查、弓形虫抗体检查、猫传染性腹膜炎诊断、血液寄生虫检查、犬猫胰腺炎检查等。
+                </p>
+
+                <br>
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">视频</h5>
+                <video id="depart2_video" width="500px" height="400px" controls="controls">
+                    <source src="{% static 'guide/images/depart2_webm.webm' %}" type="video/webm"/>
+                    <source src="{% static 'guide/images/depart2_mp4.mp4'%}" type="video/mp4"/>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="depart12_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >病房</h4>
+            </div>
+            <div class="modal-body">
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">简介</h5>
+                <p style="font-size:15px;line-height:25pt">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">目前我们只接受犬猫住院，为了更好的照顾动物，减少动物应激，划分出</span><span style="font-size:14px;">1</span><span style="font-size:14px;">个普通犬病房、</span><span style="font-size:14px;">1</span><span style="font-size:14px;">个重症犬病房、</span><span style="font-size:14px;">1</span><span style="font-size:14px;">个猫病房，原有的消化道传染病病房已改建，因此患有犬猫细小病毒或犬冠状病毒感染的患病动物无法再接收住院。</span>
+                </p>
+                <p style="font-size:15px;line-height:25pt;">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">除猫病房外，每间病房设置有大小两种规格的笼位，可以满足由1kg至50kg体重动物的需求（此处体重仅作为参考数据，具体情况以实际身长为标准）。笼位内放置消毒毛毯作为基础垫料，上铺吸水性尿片，每只患病动物均有属于自己的储物柜，用于放置自备药物及物品。</span>
+                </p>
+                <p style="font-size:15px;line-height:25pt;">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">目前我们拥有多种国外进口的先进的医疗设备，包括心电监护仪</span><span style="font-size:14px;">2</span><span style="font-size:14px;">台、血压仪</span><span style="font-size:14px;">2</span><span style="font-size:14px;">台、心电图</span><span style="font-size:14px;">1</span><span style="font-size:14px;">台、血气仪</span><span style="font-size:14px;">1</span><span style="font-size:14px;">台，同时还有输液泵、输血泵、微量注射泵和化疗用生物安全柜等仪器，力求让住院动物得到最精确、全面的治疗和监测，为住院动物尤其是危重动物的治疗和监护提供了强大的支持。</span>
+                </p>
+                <p style="font-size:15px;line-height:25pt;">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">技术过硬和经验丰富的医护团队是我们的强大后盾。住院部现有工作人员</span><span style="font-size:14px;">16</span><span style="font-size:14px;">名，住院医师</span><span style="font-size:14px;">8</span><span style="font-size:14px;">名，助理</span><span style="font-size:14px;">8</span><span style="font-size:14px;">名，其中硕士</span><span style="font-size:14px;">6</span><span style="font-size:14px;">人，本科</span><span style="font-size:14px;">7</span><span style="font-size:14px;">人。住院部有</span><span style="font-size:14px;">5</span><span style="font-size:14px;">名医生兼任内外科主治医师，已经形成了心肺疾病、血液病、内分泌疾病、皮肤病、消化道疾病和泌尿系统疾病等专科方向。目前，我们在糖尿病、肝脏疾病、肾脏疾病、胰腺炎、消化道疾病、心脏病和血液病等疾病积累了丰富的诊疗和护理经验；在外科方面，我们对于术前及术后动物的治疗和护理也具有丰富的实战经验。</span>
+                </p>
+                <p style="font-size:15px;line-height:25pt;">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">我们是一支充满朝气，不断进取的队伍，在追求为动物提供更高水平的治疗和护理方案的同时，在我院内科教研室营养组的支持下，我们为所有入院动物提供了合理的营养方案。</span>
+                </p>
+                <p style="font-size:15px;line-height:25pt;">
+                    &nbsp; &nbsp; &nbsp;<span style="font-size:14px;">为了让更多可爱的小生命减轻痛苦，更快地恢复健康，陪伴在主人的身旁，我们会更加努力，不断学习，提高业务素质和服务水平。</span>
+                </p>
+
+                <br>
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">照片</h5>
+                <img src="{% static 'guide/images/depart12_1.png' %}" style="padding: 10px;"/>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="depart13_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >手术室</h4>
+            </div>
+            <div class="modal-body">
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">简介</h5>
+                <p style="font-size:15px;line-height:25pt">&nbsp; &nbsp; &nbsp;医院手术室，是医院的核心技术部门之一，也是医院外科的重要组成部分与后备力量源地，现拥有1个手术准备室、3个手术操作间、1间留观室、1间处置室和1间消毒室，每年高质量地完成3000例左右的手术和6000例左右的外科处置，接待120人左右的本科生实习和10人左右的硕士研究生专业学习，接待50人次左右的外院进修学习，是国内动物医院最早配备专职麻醉师和手术留观室的手术室，深受国内同行和动物主人的赞许与推崇。</p>
+                <p style="font-size:15px;line-height:25pt;">&nbsp; &nbsp; &nbsp;手术室配有当前小动物临床最先进的设备和仪器：吸入麻醉机（7台，异氟烷和七氟烷）、呼吸机（4台）、多功能监护仪（5台）、温毯机（3台）、吸引器、胃肠内窥镜、外科显微镜、气钻、神经外科工具套装、骨科工具套装及清洗消毒设备等，为开展普通软组织外科、胸外科、神经外科、骨科、泌尿外科、整形外科等多学科手术及麻醉、疼痛管理、重症动物监护与管理以及内科支持疗法提供了最有力的支持。
+                </p>
+
+                <br>
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">照片</h5>
+                <img src="{% static 'guide/images/depart13_1.png' %}" style="padding: 10px;"/>
+                <br>
+                <img src="{% static 'guide/images/depart13_2.png'%}" style="padding: 10px;"/>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="depart15_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >影像中心</h4>
+            </div>
+            <div class="modal-body">
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">简介</h5>
+                <p style="font-size:15px;line-height:25pt">&nbsp; &nbsp; &nbsp;影像中心拥有主任医师<span>1</span>名，普通影像医师<span>3</span>名，住院医<span>2</span>名，及硕士研究生<span>4</span>名。技术力量雄厚，为医院的临床、教学及科研工作提供强有力的支持。学科带头人谢富强副教授，于<span>1986</span>年<span>7</span>月研究生毕业获得中国农业大学硕士学位，现任中国农业大学动物医学院副教授，担任中国兽医影像技术分会副理事长、中国德国牧羊犬俱乐部髋肘关节评审专家，经验丰富，学识渊博，在兽医影像领域发表过多篇研究性论文，主编《兽医影像》，翻译多本国外经典影像学著作。
+                </p>
+                <p style="font-size:15px;line-height:25pt">
+                    &nbsp; &nbsp; &nbsp;<span>X</span>线诊断室和超声诊断室在过去多年的临床工作中积累了丰富的经验，除了进行常规的<span>X</span>线及腹部超声诊断，根据临床工作和疾病诊断的需要，逐渐开展各项造影检查及超声心动检查。多年来不断开展国内兽医影像学领域领先的新项目及新课题，其中包括北京地区小型犬心脏椎体测量参考范围的修正、心动超声、超声引导下脾门静脉造影术的研究、膝关节超声检查关节炎及退行性关节疾病的研究、肾脏血液动力学变化与急性肾衰竭的初探、胸导管造影、排泄性尿路造影等技术改进等。
+                </p>
+                <p style="font-size:15px;line-height:25pt;">&nbsp; &nbsp; &nbsp;影像科设备先进、技术专业、服务周到，拥有专业影像技术人才，始终秉承“没有最好，只有更好”的发展理念，在学科带头人谢富强主任医师的带领下坚持各项影像专业技术共同发展，服务与质量并重，努力把医学影像科建设成为全国兽医领域最有影响力的、一流的影像诊治中心。
+                </p>
+
+                <br>
+                <h5 style="font-size:21px;border-bottom: 1px #0088bb solid">照片</h5>
+                <img src="{% static 'guide/images/depart15_1.png' %}" style="padding: 10px;"/>
+                <p style="text-align: center">影像工作站</p>
+                <img src="{% static 'guide/images/depart15_2.png' %}" style="padding: 10px;"/>
+                <p style="text-align: center">DRx线机</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+</body>
+</html>

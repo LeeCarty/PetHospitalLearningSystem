@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12px;
+    line-height: 1.7;
+    padding-top: 60px;
+}
+
+li {
+    list-style: none;
+}
+
+#content {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#content h1 {
+    color: #0088bb;
+}
+
+#content .item {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px dotted #0088bb;
+}
+
+#content .item h2 {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid #0088bb;
+    margin-bottom: 10px;
+}
+
+#content .item .relative{
+    position:relative;
+    padding:0px;
+}
+
+#content .item .relative img {
+    width: 900px;
+    height: 500px;
+    border: none;
+}
+
+#content .item .relative a{
+    position: absolute;
+    background:url(about:blank);
+}
+
+/*#content .item .relative a:hover{*/
+    /*background:#FFFF33;*/
+    /*opacity:0.5;*/
+/*}*/
+
+#guide {
+    position: fixed;
+    top: 100px;
+    left: 0px;
+}
+
+#menu {
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    margin-left: 500px;
+    width: 50px;
+}
+
+#menu ul li a {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#menu ul li a:hover,
+#menu ul li a.current {
+    color: #fff;
+    background: #0088bb;
+}
+
+#switch-box{
+    position:fixed;
+    top:500px;
+    left:50%;
+    margin-left:500px;
+    text-align:center;
+}
+
+#switch-box span{
+    margin-top:20px;
+    font-size:16px;
+    color:#333;
+}
+
+* html, * html body {
+    background-image: url(about:blank);
+    background-attachment: fixed;
+}
+
+* html #menu {
+    position: absolute;
+    bottom: auto;
+    top: expression(100+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+'px');
+}
