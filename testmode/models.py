@@ -9,6 +9,7 @@ class DiseaseType(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=20, blank=True)
     descriptions = models.TextField(blank=True, null=False)
+    # image = models.ImageField()
 
     def __str__(self):
         return self.name

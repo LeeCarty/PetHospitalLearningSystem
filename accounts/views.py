@@ -21,6 +21,7 @@ def login(request):
             if account_id and account_id.password == psd:
                 # 跳转到系统主页
                 context['account'] = account_id
+                # request.set_cookie('email', email, 3600)
                 return render(request, 'base.html', context=context)
             else:
                 # 用户密码不匹配

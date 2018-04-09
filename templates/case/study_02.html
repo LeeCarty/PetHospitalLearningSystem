@@ -1,0 +1,90 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>病例学习</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'case/css/navCss.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'case/css/study_02.css' %}" type="text/css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="BACK">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<!-- navbar-inverse 设置背景 
+	navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
+	增加导航条的可访问性 role="navigation"-->
+		<div class="user-logo">
+			<img src="{% static 'case/pic/girl.png' %}" class="img-circle img-position">
+		</div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="main.html" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+			</div>
+			<ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
+				<li>
+					<a style="font-weight: bold" href="guide.html">医院导览</a>
+				</li>
+				<li class="dropdown active">
+					<a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+						职能学习
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li style="text-align: center">
+							<a href="choosecareer.html">角色扮演</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li style="text-align: center">
+							<a href="choosecase.html">病例学习</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+						测试
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li style="text-align: center">
+							<a href="testType.html">进入测试</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li style="text-align: center">
+							<a href="testManage.html">测试管理</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="caseinfo">
+		<div class="casetext">
+			<h3>
+					<!--<script language="javascript" type="text/javascript">-->
+						<!--var loc = location.href;-->
+						<!--var n1 = loc.length;//地址的总长度-->
+						<!--var n2 = loc.indexOf("=");//取得=号的位置-->
+						<!--var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容-->
+						<!--document.write(id);-->
+				<!--</script>-->
+				{{name}}
+			</h3>
+			<a>{{desc}}</a>
+			<a>{{ image }}</a>
+		</div>
+		<div class="caseimg">
+			<!--<img src="{% static 'case/pic/choosecareer.jpg' %}" class="no-repeat,fixed">-->
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

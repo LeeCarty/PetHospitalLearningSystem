@@ -50,11 +50,11 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li style="text-align: center">
-							<a href="#">进入测试</a>
+							<a href="../test_type">进入测试</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li style="text-align: center">
-							<a href="#">测试管理</a>
+							<a href="../test_manage">测试管理</a>
 						</li>
 					</ul>
 				</li>
@@ -76,22 +76,22 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" value="A" name="A" />&nbsp;&nbsp;A：{{ question.answer_A }}
+								<input type="radio" value="A" name="{{question.id}}" />&nbsp;&nbsp;A：{{ question.answer_A }}
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" value="B" name="B" />&nbsp;&nbsp;B：{{ question.answer_B }}
+								<input type="radio" value="B" name="{{question.id}}" />&nbsp;&nbsp;B：{{ question.answer_B }}
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" value="C" name="C" />&nbsp;&nbsp;C：{{ question.answer_C }}
+								<input type="radio" value="C" name="{{question.id}}" />&nbsp;&nbsp;C：{{ question.answer_C }}
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" value="D" name="D" />&nbsp;&nbsp;D：{{ question.answer_D }}
+								<input type="radio" value="D" name="{{question.id}}" />&nbsp;&nbsp;D：{{ question.answer_D }}
 							</td>
 						</tr>
 					{% empty %}

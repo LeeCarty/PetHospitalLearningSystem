@@ -1,0 +1,165 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>选择病例</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'case/css/navCss.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'case/css/choosecase.css' %}" type="text/css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<!-- navbar-inverse 设置背景 
+	navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
+	增加导航条的可访问性 role="navigation"-->
+		<div class="user-logo">
+			<img src="{% static 'case/pic/girl.png' %}" class="img-circle img-position">
+		</div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="main.html" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+			</div>
+			<ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
+				<li>
+					<a style="font-weight: bold" href="guide.html">医院导览</a>
+				</li>
+				<li class="dropdown active">
+					<a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+						职能学习
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li style="text-align: center">
+							<a href="choosecareer.html">角色扮演</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li style="text-align: center">
+							<a href="choosecase.html">病例学习</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+						测试
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li style="text-align: center">
+							<a href="testType.html">进入测试</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li style="text-align: center">
+							<a href="testManage.html">测试管理</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div id="menu">
+            <nav class="navbar navbar-default" role="navigation">
+	<div class="collapse navbar-collapse" id="bs-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a class="sscroll" href="choosecase.html#chuanran">传染病</a></li>
+				<li><a class="sscroll" href="choosecase.html#jisheng">寄生虫病</a></li>
+				<li><a class="sscroll" href="choosecase.html#neike">内科</a></li>
+				<li><a class="sscroll" href="choosecase.html#waichan">外产科疾病</a></li>
+				<li><a class="sscroll" href="choosecase.html#changyong">常用手术</a></li>
+				<li><a class="sscroll" href="choosecase.html#mianyi">免疫</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+		<div id="container">
+				<section id="chuanran" class="chuanran">
+					<h3 class="text-left">传染病</h3>
+					<a href="study_02.html?case=犬瘟热" class="btn btn-info">犬瘟热</a>
+					<a href="study_02.html?case=犬细小病毒" class="btn btn-info">犬细小病毒</a>
+					<a href="study_02.html?case=犬传染性肝炎" class="btn btn-info">犬传染性肝炎</a>
+					<a href="study_02.html?case=犬冠状病毒" class="btn btn-info">犬冠状病毒</a>
+					<a href="study_02.html?case=猫泛白细胞减少症" class="btn btn-info">猫泛白细胞减少症</a>
+					<a href="study_02.html?case=猫病毒性病气管炎" class="btn btn-info">猫病毒性病气管炎</a>
+					<a href="study_02.html?case=皮肤真菌感染" class="btn btn-info">皮肤真菌感染</a>
+				</section>
+				<section id="jisheng" class="jisheng">
+					<h3 class="text-left">寄生虫病</h3>
+					<a href="study_02.html?case=蛔虫病" class="btn btn-info">蛔虫病</a>
+					<a href="study_02.html?case=钩虫病" class="btn btn-info">钩虫病</a>
+					<a href="study_02.html?case=绦虫病" class="btn btn-info">绦虫病</a>
+					<a href="study_02.html?case=球虫病" class="btn btn-info">球虫病</a>
+					<a href="study_02.html?case=疥螨虫病" class="btn btn-info">疥螨虫病</a>
+					<a href="study_02.html?case=蚤病" class="btn btn-info">蚤病</a>
+					{% for case2 in cases2 %}
+					    <a href="{%url 'study_02' case2.name %}" class="btn btn-info">{{case2.name}}</a>
+					{% endfor %}
+				</section>
+				<section id="neike" class="neike">
+					<h3 class="text-left">内科</h3>
+					<a href="study_02.html?case=口炎" class="btn btn-info">口炎</a>
+					<a href="study_02.html?case=肠炎" class="btn btn-info">肠炎</a>
+					<a href="study_02.html?case=肠便秘" class="btn btn-info">肠便秘</a>
+					<a href="study_02.html?case=胰腺炎" class="btn btn-info">胰腺炎</a>
+					<a href="study_02.html?case=肝炎" class="btn btn-info">肝炎</a>
+					<a href="study_02.html?case=腹膜炎" class="btn btn-info">腹膜炎</a>
+					<a href="study_02.html?case=肛门腺炎" class="btn btn-info">肛门腺炎</a>
+					<a href="study_02.html?case=感冒" class="btn btn-info">感冒</a>
+					<a href="study_02.html?case=鼻炎" class="btn btn-info">鼻炎</a>
+					<a href="study_02.html?case=气管支气管炎" class="btn btn-info">气管支气管炎</a>
+					<a href="study_02.html?case=肺炎" class="btn btn-info">肺炎</a>
+					<a href="study_02.html?case=心力衰竭" class="btn btn-info">心力衰竭</a>
+					<a href="study_02.html?case=尿道感染" class="btn btn-info">尿道感染</a>
+					<a href="study_02.html?case=尿结石" class="btn btn-info">尿结石</a>
+					<a href="study_02.html?case=膀胱炎" class="btn btn-info">膀胱炎</a>
+					<a href="study_02.html?case=肾炎" class="btn btn-info">肾炎</a>
+					<a href="study_02.html?case=佝偻病" class="btn btn-info">佝偻病</a>
+					<a href="study_02.html?case=有机磷中毒" class="btn btn-info">有机磷中毒</a>
+					<a href="study_02.html?case=糖尿病" class="btn btn-info">糖尿病</a>
+					<a href="study_02.html?case=耳血肿" class="btn btn-info">耳血肿</a>
+					<a href="study_02.html?case=中耳炎" class="btn btn-info">中耳炎</a>
+					<a href="study_02.html?case=眼睑内翻" class="btn btn-info">眼睑内翻</a>
+					<a href="study_02.html?case=结膜炎" class="btn btn-info">结膜炎</a>
+					<a href="study_02.html?case=角膜炎" class="btn btn-info">角膜炎</a>
+				</section>
+				<section id="waichan" class="waichan">
+					<h3 class="text-left">外产科疾病</h3>
+					<a href="study_02.html?case=外伤" class="btn btn-info">外伤</a>
+					<a href="study_02.html?case=外科感染" class="btn btn-info">外科感染</a>
+					<a href="study_02.html?case=骨折" class="btn btn-info">骨折</a>
+					<a href="study_02.html?case=关节脱位" class="btn btn-info">关节脱位</a>
+					<a href="study_02.html?case=湿疹" class="btn btn-info">湿疹</a>
+					<a href="study_02.html?case=皮炎" class="btn btn-info">皮炎</a>
+					<a href="study_02.html?case=脓皮病" class="btn btn-info">脓皮病</a>
+					<a href="study_02.html?case=脱毛症" class="btn btn-info">脱毛症</a>
+					<a href="study_02.html?case=趾间囊肿" class="btn btn-info">趾间囊肿</a>
+					<a href="study_02.html?case=疝" class="btn btn-info">疝</a>
+					<a href="study_02.html?case=阴道炎" class="btn btn-info">阴道炎</a>
+					<a href="study_02.html?case=阴道脱出" class="btn btn-info">阴道脱出</a>
+					<a href="study_02.html?case=子宫蓄脓" class="btn btn-info">子宫蓄脓</a>
+					<a href="study_02.html?case=难产" class="btn btn-info">难产</a>
+					<a href="study_02.html?case=乳房炎" class="btn btn-info">乳房炎</a>
+				</section>
+				<section id="changyong" class="changyong">
+					<h3 class="text-left">常用手术</h3>
+					<a href="study_02.html?case=绝育" class="btn btn-info">绝育</a>
+					<a href="study_02.html?case=剖腹产" class="btn btn-info">剖腹产</a>
+					<a href="study_02.html?case=瞬膜腺增生物切除" class="btn btn-info">瞬膜腺增生物切除</a>
+					<a href="study_02.html?case=眼球摘除" class="btn btn-info">眼球摘除</a>
+					<a href="study_02.html?case=立耳术" class="btn btn-info">立耳术</a>
+					<a href="study_02.html?case=断尾术" class="btn btn-info">断尾术</a>
+				</section>
+				<section id="mianyi" class="mianyi">
+					<h3 class="text-left">免疫</h3>
+					<a href="study_02.html?case=犬、猫免疫程序" class="btn btn-info">犬、猫免疫程序</a>
+				</section>
+			</div>
+
+</body>
+</html>
