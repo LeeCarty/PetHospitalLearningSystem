@@ -1,8 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title>选择病例</title>
@@ -25,11 +23,11 @@
 		</div>
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+				<a class="navbar-brand" href="#" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
 			</div>
 			<ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
 				<li>
-					<a style="font-weight: bold" href="../guide">医院导览</a>
+					<a style="font-weight: bold" href="{%url 'guide' %}">医院导览</a>
 				</li>
 				<li class="dropdown active">
 					<a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -37,12 +35,12 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<!--<li style="text-align: center">-->
-							<!--<a href="#">角色扮演</a>-->
-						<!--</li>-->
+						<li style="text-align: center">
+                                <a href="{%url 'choosecareer' %}">角色扮演</a>
+                            </li>
 						<li role="separator" class="divider"></li>
 						<li style="text-align: center">
-							<a href="../case/choosecase">病例学习</a>
+							<a href="{%url 'choosecase' %}">病例学习</a>
 						</li>
 					</ul>
 				</li>
@@ -53,11 +51,11 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li style="text-align: center">
-							<a href="../test/test_type">进入测试</a>
+							<a href="{%url 'test_type' %}">进入测试</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li style="text-align: center">
-							<a href="../test/test_manage">测试管理</a>
+							<a href="{%url 'test_manage' %}">测试管理</a>
 						</li>
 					</ul>
 				</li>
@@ -68,12 +66,12 @@
             <nav class="navbar navbar-default" role="navigation">
 	<div class="collapse navbar-collapse" id="bs-navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a class="sscroll" href="choosecase.html#chuanran">传染病</a></li>
-				<li><a class="sscroll" href="choosecase.html#jisheng">寄生虫病</a></li>
-				<li><a class="sscroll" href="choosecase.html#neike">内科</a></li>
-				<li><a class="sscroll" href="choosecase.html#waichan">外产科疾病</a></li>
-				<li><a class="sscroll" href="choosecase.html#changyong">常用手术</a></li>
-				<li><a class="sscroll" href="choosecase.html#mianyi">免疫</a></li>
+				<li><a class="sscroll" href="#">传染病</a></li>
+				<li><a class="sscroll" href="#">寄生虫病</a></li>
+				<li><a class="sscroll" href="#">内科</a></li>
+				<li><a class="sscroll" href="#">外产科疾病</a></li>
+				<li><a class="sscroll" href="#">常用手术</a></li>
+				<li><a class="sscroll" href="#">免疫</a></li>
 			</ul>
 		</div>
 	</nav>

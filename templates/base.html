@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>系统主页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'accounts/css/navCss.css' %}" type="text/css">
@@ -20,11 +21,19 @@
             height: 100%;
             background-position: center;
             position: absolute;
-            background: url({% static 'testmode/images/main.jpg' %}) no-repeat fixed top;
+            <!--background: url({% static 'testmode/images/main.jpg' %}) no-repeat fixed top;-->
             background-size: cover;
 
         }
     </style>
+    {% block css %}
+        <!-- add css -->
+    {% endblock %}
+
+
+    {% block js %}
+        <!-- add js fill here -->
+    {% endblock %}
 </head>
 
 <body>
@@ -42,7 +51,7 @@
                 </div>
                 <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
                     <li>
-                        <a style="font-weight: bold" href="/guide">医院导览</a>
+                        <a style="font-weight: bold" href="{%url 'guide' %}">医院导览</a>
                     </li>
                     <li class="dropdown">
                         <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -50,12 +59,12 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <!--<li style="text-align: center">-->
-                                <!--<a href="#">角色扮演</a>-->
-                            <!--</li>-->
+                            <li style="text-align: center">
+                                <a href="{%url 'choosecareer' %}">角色扮演</a>
+                            </li>
                             <li role="separator" class="divider"></li>
                             <li style="text-align: center">
-                                <a href="/case/choosecase">病例学习</a>
+                                <a href="{%url 'choosecase' %}">病例学习</a>
                             </li>
                         </ul>
                     </li>
@@ -66,11 +75,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li style="text-align: center">
-                                <a href="/test/test_type">进入测试</a>
+                                <a href="{%url 'test_type' %}">进入测试</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li style="text-align: center">
-                                <a href="/test/test_manage">测试管理</a>
+                                <a href="{%url 'test_manage' %}">测试管理</a>
                             </li>
                         </ul>
                     </li>
@@ -78,14 +87,16 @@
             </div>
         </nav>
 
-        <!--<div class="container">-->
-            <!--<main>-->
-                <!--{% block main %}-->
-                <!--{% endblock main %}-->
-            <!--</main>-->
-        <!--</div>-->
+        <div class="container">
+            <main>
+                {% block main %}
+                    <!-- add refresh page tag-div-class-container -->
+                {% endblock %}
+            </main>
+        </div>
 
     </div>
+
 </body>
 
 </html>

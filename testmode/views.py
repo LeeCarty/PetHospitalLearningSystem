@@ -34,8 +34,8 @@ def test_choice(request, type_id):
 def paper_search(request, search_key):
     context = {}
     search_key = request.POST['search_key']
-    import pdb
-    pdb.set_trace()
+    # import pdb
+    # pdb.set_trace()
 
     # TestPaperList  仅支持试卷名检索
     paper_list = TestPaper.objects.filter(Q(name__contains=search_key))
