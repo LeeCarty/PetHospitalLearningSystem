@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>选择角色</title>
+      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+         crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'case/css/navCss.css' %}" type="text/css">
+      <link rel="stylesheet" href="{% static 'case/css/choosecareer.css' %}" type="text/css">
+      <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+     crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <div class="BACK" style="background:{% static 'case/pic/choosecarrer.jpg' %}">
+         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- navbar-inverse 设置背景 
+               navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
+               增加导航条的可访问性 role="navigation"-->
+            <div class="user-logo">
+               <img src="{% static 'case/pic/girl.png' %}" class="img-circle img-position">
+            </div>
+            <div class="container-fluid">
+               <div class="navbar-header">
+                  <a class="navbar-brand" href="#" style="color:rgb(106, 158, 201)">虚拟宠物医院学习系统</a>
+               </div>
+               <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
+                  <li>
+                    <a style="font-weight: bold" href="{%url 'guide' %}">医院导览</a>
+                  </li>
+                  <li class="dropdown active">
+                     <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                     职能学习
+                     <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li style="text-align: center">
+                           <a href="{%url 'choosecareer' %}">角色扮演</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li style="text-align: center">
+                           <a href="{%url 'choosecase' %}">病例学习</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="dropdown">
+                     <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                     测试
+                     <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li style="text-align: center">
+                           <a href="{%url 'test_type' %}">进入测试</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li style="text-align: center">
+                           <a href="{%url 'test_manage' %}">测试管理</a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+		 </nav>
+		 <div class="career">
+            <a href="{%url 'study_01' '前台'%}" type="button"  class="btn"  style="background:#044223;text-align:center;line-height:250px" value="前台">前台</a>
+            <a href="{%url 'study_01' '医助'%}" type="button"  class="btn"  style="background:#808080;text-align:center;line-height:250px" value="医助">医助</a>
+            <a href="{%url 'study_01' '兽医'%}" type="button"  class="btn"  style="background:#6b340a;text-align:center;line-height:250px" value="兽医">兽医</a>
+                <!--<input type="button"  class="btn"  style="background:#044223" value="前台" onclick=location.href="study_01.html?career=前台">-->
+            <!--<input type="button"  class="btn"  style="background:#808080" value="医助" onclick=location.href="study_01.html?career=医助">-->
+            <!--<input type="button"  class="btn"  style="background:#6b340a" value="兽医" onclick=location.href="study_01.html?career=兽医">-->
+		 </div>
+      </div>
+   </body>
+</html>

@@ -59,7 +59,7 @@
         </div>
         <ul class="nav nav-pills navbar-right" role="tablist" style="font-size:20px">
             <li class="active">
-                <a style="font-weight: bold" href="">医院导览</a>
+                <a style="font-weight: bold" href="{%url 'guide' %}">医院导览</a>
             </li>
             <li class="dropdown">
                 <a style="font-weight: bold" class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -67,12 +67,12 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <!--<li style="text-align: center">-->
-                        <!--<a href="#">角色扮演</a>-->
-                    <!--</li>-->
+                    <li style="text-align: center">
+                        <a href="{%url 'choosecareer' %}">角色扮演</a>
+                    </li>
                     <li role="separator" class="divider"></li>
                     <li style="text-align: center">
-                        <a href="../case/choosecase">病例学习</a>
+                        <a href="{%url 'choosecase' %}">病例学习</a>
                     </li>
                 </ul>
             </li>
@@ -83,11 +83,11 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li style="text-align: center">
-                        <a href="../test/test_type">进入测试</a>
+                        <a href="{%url 'test_type' %}">进入测试</a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li style="text-align: center">
-                        <a href="../test/test_manage">测试管理</a>
+                        <a href="{%url 'test_manage' %}">测试管理</a>
                     </li>
                 </ul>
             </li>
