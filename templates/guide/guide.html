@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!doctype html>
 <html>
 <head>
@@ -87,9 +88,12 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li style="text-align: center">
-                        <a href="{%url 'test_manage' %}">测试管理</a>
+                        <a href="{%url 'test_manage' %}">测试记录</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a style="font-weight: bold" href="../admin">数据管理</a>
             </li>
         </ul>
     </div>

@@ -7,6 +7,9 @@ from smtplib import SMTPException
 
 # Create your views here.
 
+# 数据库管理请求 路由：'/admin'
+# def
+
 
 # 处理登录界面请求 路由：'/'
 def login(request):
@@ -22,7 +25,7 @@ def login(request):
                 # 跳转到系统主页
                 context['account'] = account_id
                 # request.set_cookie('email', email, 3600)
-                return render(request, 'base.html', context=context)
+                return render(request, 'guide/guide.html', context=context)
             else:
                 # 用户密码不匹配
                 error_msg = '用户邮箱或密码错误！'

@@ -43,24 +43,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
+            {% for lst in utr_list %}
+                <tr>
+                    <td>{{ lst.paper_id.name }}</td>
+                    <td>{{ lst.finish_time }}</td>
+                    <td>{{ lst.grade }}</td>
+                    <td>{{ lst.tips }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    无测试记录!
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

@@ -15,7 +15,7 @@
    <body>
       <div class="BACK" style="background:{% static 'case/pic/choosecarrer.jpg' %}">
          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <!-- navbar-inverse 设置背景 
+            <!-- navbar-inverse 设置背景
                navbar-fixed-top 设置头部固定在顶部,因此需要给body设置顶部padding,一般设置为padding-top:60px
                增加导航条的可访问性 role="navigation"-->
             <div class="user-logo">
@@ -55,10 +55,13 @@
                         </li>
                         <li role="separator" class="divider"></li>
                         <li style="text-align: center">
-                           <a href="{%url 'test_manage' %}">测试管理</a>
+                           <a href="{%url 'test_manage' %}">测试记录</a>
                         </li>
                      </ul>
                   </li>
+                   <li>
+                        <a style="font-weight: bold" href="../admin">数据管理</a>
+                   </li>
                </ul>
             </div>
 		 </nav>

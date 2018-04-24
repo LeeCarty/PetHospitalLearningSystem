@@ -7,10 +7,9 @@
 
 {% block main %}
 	<div class="shijuan">
-		<script>
-			var UserEmail = GetCookie("useremail");
-			document.write(UserEmail)</script>
 		<form id="shijuanform" action="../paper_submit" method="post">
+			<input type="text" class="form-control" align="center" name="paper_name" value="{{ paper_obj.name }}" readonly="1"/>
+			<p>本次考试时间: {{ paper_obj.test_time }}， 请注意掌握时间！</p>
 			<table class="paper-question-table">
 				<!-- 第一题    -->
 				{% for question in question_list %}
