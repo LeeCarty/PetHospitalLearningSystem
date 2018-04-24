@@ -1,10 +1,12 @@
 # coding: utf-8
 from django.conf.urls import url
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import admin
 
 from . import views
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', csrf_exempt(views.login), name='login'),
     url(r'^register$', csrf_exempt(views.register), name='register'),
     url(r'^password_modify$', csrf_exempt(views.password_modify), name='password_modify'),

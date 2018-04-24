@@ -45,7 +45,7 @@ class Tag(models.Model):
 
 
 class TestPaper(models.Model):
-    name = models.CharField(max_length=100, null=False, verbose_name='试卷名')
+    name = models.CharField(max_length=100, null=False, unique=True, verbose_name='试卷名')
     disease_type_id = models.ForeignKey(DiseaseType, verbose_name='病种')
     disease_small_type_id = models.ForeignKey(DiseaseSmallType, verbose_name='疾病名称')
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')

@@ -1,7 +1,9 @@
 # coding: utf-8
 from django.shortcuts import render, get_object_or_404
 from .models import DiseaseType, DiseaseSmallType, Tag, TestPaper, PaperQuestions, UserTestRecords
+from accounts.models import Accounts
 from django.db.models import Q
+from django.utils.datastructures import MultiValueDictKeyError
 
 # Create your views here.
 
@@ -15,7 +17,8 @@ def test_type(request):
 # 测试管理 请求处理  路由： '/test_manage'
 def test_manage(request):
     context = {}
-
+    utr_list = UserTestRecords.objects.all().order_by('-finish_time')
+    context['utr_list'] = utr_list
     return render(request, 'testmode/testManage.html', context=context)
 
 
@@ -34,20 +37,9 @@ def test_choice(request, type_id):
 def paper_search(request, search_key):
     context = {}
     search_key = request.POST['search_key']
-    # import pdb
-    # pdb.set_trace()
 
     # TestPaperList  仅支持试卷名检索
     paper_list = TestPaper.objects.filter(Q(name__contains=search_key))
-
-    # # disease_type_id.name
-    # dt_list = DiseaseType.objects.filter(Q(name__contains=search_key))
-    #
-    # # disease_small_type_id.name
-    # dst_list = DiseaseSmallType.objects.filter(Q(name__contains=search_key))
-    #
-    # # tags.name
-    # tag_list = Tag.objects.filter(Q(name__contains=search_key))
 
     context['paper_list'] = paper_list
     return render(request, 'testmode/paperChoice.html', context=context)
@@ -56,8 +48,13 @@ def paper_search(request, search_key):
 # 试卷内容 请求处理  路由： '/test_paper/<id>'
 def test_paper(request, paper_id):
     context = {}
+
     question_list = PaperQuestions.objects.filter(paper_id=paper_id).order_by('id')
+    paper_obj = TestPaper.objects.get(id=paper_id)
+
     context['question_list'] = question_list
+    context['paper_obj'] = paper_obj
+
     return render(request, 'testmode/test.html', context=context)
 
 
@@ -65,12 +62,34 @@ def test_paper(request, paper_id):
 def paper_submit(request):
     context = {}
     grade = 0
-    for i in range(1, 1000):
-        if str(i) in request.POST.keys():
-            answer = request.POST[str(i)]
-            question_obj = PaperQuestions.objects.filter(id=i, answer=answer)
-            if question_obj:
-                grade += 1
+
+    paper_odj = TestPaper.objects.get(name=request.POST['paper_name'])
+    question_list = PaperQuestions.objects.filter(paper_id=paper_odj.id).order_by('id')
+    for item in question_list:
+        answer_id = str(item.id)
+        try:
+            get_answer = request.POST[answer_id]
+        except MultiValueDictKeyError:
+            continue
+        if item.answer.upper() == get_answer:
+            grade += 1
+
     grade *= 5
+    tips = ''
+    if grade >= 80:
+        tips = 'Good Job!'
+    elif grade >= 60:
+        tips = 'Keep Trying!'
+    else:
+        tips = 'Work Harder!'
+
+    # import pdb
+    # pdb.set_trace()
+
+    user_odj = Accounts.objects.get(email='111111@qq.com')
+
+    UserTestRecords(user_id=user_odj, paper_id=paper_odj, grade=grade, tips=tips).save()
+    utr_list = UserTestRecords.objects.all().order_by('-finish_time')
+    context['utr_list'] = utr_list
 
     return render(request, 'testmode/testManage.html', context=context)

@@ -135,6 +135,9 @@ USE_TZ = True
 
 STATIC_URL = '/resource/'
 
+# system images store here
+MEDIA_ROOT = os.path.join(BASE_DIR, "images")
+
 
 # qq  POP3/SMTP  email configure
 
