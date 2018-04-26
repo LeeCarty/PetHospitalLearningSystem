@@ -7,6 +7,13 @@
 /*
    [ TYPHOGRAPY ]
 */
+.casebtn
+{
+    width:210px;
+    height:40px;
+    margin: 10px 5px 15px 10px;
+    background-color:#eb94aa;
+}
 ul.list li:before {
    position: absolute;
    left: 3px;

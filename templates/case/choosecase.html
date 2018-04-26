@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'case/css/navCss.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'case/css/buttons.css' %}" type="text/css">
 	<link rel="stylesheet" href="{% static 'case/css/choosecase.css' %}" type="text/css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -83,37 +84,37 @@
 				<section id="chuanran" class="chuanran">
 					<h3 class="text-left">传染病</h3>
 					{% for case1 in cases1 %}
-					    <a href="{%url 'study_02' case1.name %}" class="btn btn-info">{{case1.name}}</a>
+					    <a href="{%url 'study_02' case1.name %}" class="button  button-pill button-primary casebtn">{{case1.name}}</a>
 					{% endfor %}
 				</section>
 				<section id="jisheng" class="jisheng">
 					<h3 class="text-left">寄生虫病</h3>
 					{% for case2 in cases2 %}
-					    <a href="{%url 'study_02' case2.name %}" class="btn btn-info">{{case2.name}}</a>
+					    <a href="{%url 'study_02' case2.name %}" class="button  button-pill button-primary casebtn">{{case2.name}}</a>
 					{% endfor %}
 				</section>
 				<section id="neike" class="neike">
 					<h3 class="text-left">内科</h3>
 					{% for case3 in cases3 %}
-					    <a href="{%url 'study_02' case3.name %}" class="btn btn-info">{{case3.name}}</a>
+					    <a href="{%url 'study_02' case3.name %}" class="button  button-pill button-primary casebtn">{{case3.name}}</a>
 					{% endfor %}
 				</section>
 				<section id="waichan" class="waichan">
 					<h3 class="text-left">外产科疾病</h3>
 					{% for case4 in cases4 %}
-					    <a href="{%url 'study_02' case4.name %}" class="btn btn-info">{{case4.name}}</a>
+					    <a href="{%url 'study_02' case4.name %}" class="button  button-pill button-primary casebtn">{{case4.name}}</a>
 					{% endfor %}
 				</section>
 				<section id="changyong" class="changyong">
 					<h3 class="text-left">常用手术</h3>
 					{% for case5 in cases5 %}
-					    <a href="{%url 'study_02' case5.name %}" class="btn btn-info">{{case5.name}}</a>
+					    <a href="{%url 'study_02' case5.name %}" class="button  button-pill button-primary casebtn">{{case5.name}}</a>
 					{% endfor %}
 				</section>
 				<section id="mianyi" class="mianyi">
 					<h3 class="text-left">免疫</h3>
 					{% for case6 in cases6 %}
-					    <a href="{%url 'study_02' case6.name %}" class="btn btn-info">{{case6.name}}</a>
+					    <a href="{%url 'study_02' case6.name %}" class="button  button-pill button-primary casebtn">{{case6.name}}</a>
 					{% endfor %}
 				</section>
 			</div>
