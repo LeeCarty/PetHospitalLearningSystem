@@ -1,6 +1,6 @@
 coverage==4.5.1
 Django==1.11.6
 django-bootstrap==0.2.4
-Pillow==5.1.0
+Pillow==8.2.0
 psycopg2==2.7.4
 pytz==2018.3
